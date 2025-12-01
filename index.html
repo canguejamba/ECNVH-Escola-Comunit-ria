@@ -4,18 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ECNVH - Escola Comunitária Novo Horizonte</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --green-main: #32a852;
-        --green-dark: #23823b;
+        --green-main: #2f9e44;
+        --green-dark: #166534;
+        --green-soft: #d4f5e0;
+        --sand: #fff6e7;
         --text-light: #ffffff;
-        --text-dark: #222222;
-        --bg-light: #f5f5f5;
-        --max-width: 1200px;
-        --header-height: 70px;
+        --text-dark: #1f2937;
+        --ink: #0f172a;
+        --bg: #f3f7f4;
+        --max-width: 1180px;
+        --radius: 14px;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
         --transition: 0.25s ease;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
       }
 
       * {
@@ -26,8 +43,9 @@
 
       body {
         margin: 0;
-        background: #000;
+        background: var(--bg);
         color: var(--text-dark);
+        line-height: 1.6;
       }
 
       a {
@@ -42,83 +60,91 @@
         top: 0;
         left: 0;
         right: 0;
-        height: var(--header-height);
-        background: var(--green-main);
+        height: 72px;
+        background: rgba(15, 118, 71, 0.82);
+        backdrop-filter: blur(10px);
         display: flex;
         align-items: center;
         z-index: 20;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
       }
 
       .header-inner {
         width: 100%;
         max-width: var(--max-width);
         margin: 0 auto;
-        padding: 0 16px;
+        padding: 0 18px;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
 
       .logo {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: 10px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--text-light);
       }
 
       .logo img {
-        height: 40px;
+        height: 36px;
         width: auto;
         display: block;
       }
 
       .logo-text {
-        font-weight: 700;
+        font-weight: 800;
         font-size: 20px;
-        color: var(--text-light);
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
       }
 
       .nav {
         display: flex;
         align-items: center;
-        gap: 24px;
-        font-size: 13px;
+        gap: 18px;
+        font-size: 14px;
         text-transform: uppercase;
         color: var(--text-light);
+        letter-spacing: 0.04em;
       }
 
       .nav a {
         position: relative;
-        padding-bottom: 3px;
+        padding: 8px 2px;
       }
 
       .nav a::after {
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: 2px;
         width: 0;
         height: 2px;
         background: #ffffff;
         transition: width var(--transition);
       }
 
-      .nav a:hover::after {
+      .nav a:hover::after,
+      .nav a:focus-visible::after {
         width: 100%;
       }
 
       .social {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         font-size: 14px;
         color: var(--text-light);
       }
 
-      .social span {
-        font-size: 12px;
-        opacity: 0.85;
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       /* HAMBURGER MOBILE */
@@ -131,7 +157,7 @@
       }
 
       .nav-toggle span {
-        width: 20px;
+        width: 22px;
         height: 2px;
         background: #ffffff;
       }
@@ -141,12 +167,12 @@
       .hero {
         position: relative;
         min-height: 100vh;
-        background: url("public/img/hero-escola_up_2x_4x.png") center center /
-          cover no-repeat;
+        background: linear-gradient(120deg, #0f5a2c 0%, #0d8a45 45%, #0b6833 100%);
+        color: var(--text-light);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-top: var(--header-height);
+        padding-top: 92px;
         overflow: hidden;
       }
 
@@ -154,13 +180,17 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(
-            circle at 60% 60%,
-            rgba(255, 255, 255, 0.65),
-            transparent 55%
-          ),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
-        mix-blend-mode: soft-light;
+        background: url("public/img/hero-escola.jpg") center center / cover
+          no-repeat;
+        opacity: 0.22;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 68% 55%, rgba(255, 255, 255, 0.24), transparent 45%),
+          linear-gradient(115deg, rgba(255, 255, 255, 0.1), rgba(15, 23, 42, 0.08));
       }
 
       .hero-inner {
@@ -168,241 +198,422 @@
         z-index: 1;
         width: 100%;
         max-width: var(--max-width);
-        padding: 0 16px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
-        color: var(--text-light);
-      }
-
-      .hero-logo-circle {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 3px solid #ffffff;
-        display: flex;
+        padding: 0 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
         align-items: center;
-        justify-content: center;
-        margin-bottom: 16px;
-        background: rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(2px);
       }
 
-      .hero-logo-circle img {
-        max-width: 80%;
-        max-height: 80%;
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .hero-badge {
+        align-self: flex-start;
+        padding: 8px 14px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 999px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
       }
 
       .hero-title {
-        font-size: clamp(40px, 6vw, 72px);
-        line-height: 1;
+        font-size: clamp(42px, 5vw, 64px);
+        line-height: 1.05;
         font-weight: 800;
-        letter-spacing: 0.08em;
-        margin-bottom: 8px;
-        text-transform: uppercase;
+        letter-spacing: 0.06em;
       }
 
       .hero-subtitle {
-        font-size: clamp(20px, 3vw, 28px);
-        margin-bottom: 4px;
+        font-size: clamp(18px, 3vw, 24px);
+        opacity: 0.92;
         text-transform: uppercase;
+        letter-spacing: 0.04em;
       }
 
       .hero-tagline {
-        font-size: 14px;
-        max-width: 420px;
-        margin-bottom: 24px;
+        font-size: 16px;
+        max-width: 560px;
+        opacity: 0.94;
       }
 
-      .hero-btn {
-        display: inline-block;
-        padding: 10px 26px;
-        background: #ffffff;
-        border-radius: 2px;
-        font-size: 13px;
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 12px;
         font-weight: 700;
-        text-transform: uppercase;
-        color: var(--green-dark);
+        letter-spacing: 0.02em;
+        font-size: 14px;
         border: none;
         cursor: pointer;
-        transition: background var(--transition), transform var(--transition),
-          box-shadow var(--transition);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform var(--transition), box-shadow var(--transition),
+          background var(--transition), color var(--transition);
       }
 
-      .hero-btn:hover {
-        background: #f1f1f1;
-        transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      .btn-primary {
+        background: #ffffff;
+        color: var(--green-dark);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
       }
 
-      /* SHAPE DIVIDER (sopra e sotto il hero) */
-
-      .hero-top-edge,
-      .hero-bottom-edge {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        background: var(--green-main);
-        z-index: 2;
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+        background: #f8fafc;
       }
 
-      .hero-top-edge {
-        top: 0;
-        clip-path: polygon(
-          0 100%,
-          8% 65%,
-          25% 85%,
-          40% 60%,
-          60% 80%,
-          78% 55%,
-          100% 80%,
-          100% 0,
-          0 0
-        );
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.24);
       }
 
-      .hero-bottom-edge {
-        bottom: 0;
-        clip-path: polygon(
-          0 0,
-          15% 35%,
-          32% 20%,
-          50% 40%,
-          68% 20%,
-          85% 35%,
-          100% 10%,
-          100% 100%,
-          0 100%
-        );
+      .btn-secondary:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.18);
       }
 
-      /* SEZIONE INFO (sostituisce "sobre") */
-
-      .section-info {
+      .hero-card {
         position: relative;
-        background: var(--bg-light);
-        padding: 64px 16px 96px;
+        padding: 24px 22px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 45%);
+        top: -60px;
+        right: -60px;
+        opacity: 0.35;
+      }
+
+      .hero-card h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-card p {
+        font-size: 15px;
+        opacity: 0.95;
+        margin-bottom: 14px;
+      }
+
+      .quote-mark {
+        font-size: 28px;
+        display: inline-block;
+        margin-right: 6px;
+        color: #facc15;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .stat-card {
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .stat-number {
+        font-size: 24px;
+        font-weight: 800;
+        display: block;
+      }
+
+      /* SECTIONS */
+
+      main section {
+        padding: 80px 18px;
       }
 
       .section-inner {
         max-width: var(--max-width);
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        gap: 32px;
       }
 
-      .section-info h2 {
-        font-size: 24px;
+      .section-title {
+        font-size: 28px;
+        color: var(--green-dark);
         margin-bottom: 12px;
+        letter-spacing: 0.01em;
+      }
+
+      .section-lead {
+        font-size: 18px;
+        color: #374151;
+        margin-bottom: 24px;
+        max-width: 720px;
+      }
+
+      .impact-section {
+        margin-top: -60px;
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+
+      .impact-card {
+        background: #ffffff;
+        padding: 22px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .impact-card h3 {
+        font-size: 16px;
+        letter-spacing: 0.03em;
+        color: #111827;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .impact-card p {
+        color: #4b5563;
+      }
+
+      .impact-highlight {
+        background: linear-gradient(135deg, #14532d, #22c55e);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .impact-highlight::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("public/img/hero-escola_up_2x_4x.png") center center /
+          cover no-repeat;
+        opacity: 0.28;
+        mix-blend-mode: soft-light;
+      }
+
+      .impact-highlight h3,
+      .impact-highlight p {
+        position: relative;
+        z-index: 1;
+      }
+
+      .impact-number {
+        font-size: 36px;
+        font-weight: 800;
+        margin: 12px 0 2px;
+        display: block;
+      }
+
+      /* VALUES */
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+
+      .value-card {
+        background: #ffffff;
+        border-radius: var(--radius);
+        padding: 18px;
+        border: 1px solid rgba(15, 23, 42, 0.07);
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      }
+
+      .value-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        margin-bottom: 10px;
+        background: var(--green-soft);
         color: var(--green-dark);
       }
 
-      .section-info p {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 10px;
+      .value-card h4 {
+        font-size: 17px;
+        margin-bottom: 8px;
+        color: var(--ink);
       }
 
-      .highlight-box {
-        background: #ffffff;
-        border-radius: 4px;
-        padding: 18px 20px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      .value-card p {
+        color: #475569;
         font-size: 14px;
       }
 
-      .highlight-box h3 {
-        font-size: 16px;
-        margin-bottom: 8px;
+      /* STORY SECTION */
+
+      .story {
+        background: #ffffff;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        align-items: center;
+      }
+
+      .story-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .story-image img {
+        width: 100%;
+        display: block;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .story-chip {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--green-dark);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .story-text p {
+        color: #4b5563;
+        margin-bottom: 12px;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .pill-row span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        background: var(--green-soft);
+        border-radius: 12px;
+        font-weight: 600;
         color: var(--green-dark);
       }
 
-      .highlight-box ul {
-        list-style: none;
-        padding-left: 0;
+      /* CTA SECTION */
+
+      .cta {
+        background: linear-gradient(120deg, #0f5a2c, #22c55e);
+        color: #ffffff;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
       }
 
-      .highlight-box li {
-        margin-bottom: 6px;
+      .cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.14), transparent 45%);
       }
 
-      /* CONTATTO / FOOTER */
+      .cta .section-title,
+      .cta .section-lead {
+        color: #ffffff;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta .section-lead {
+        max-width: 720px;
+      }
+
+      /* FOOTER */
 
       .footer {
-        background: var(--green-main);
-        color: var(--text-light);
-        padding: 24px 16px 18px;
-        position: relative;
+        background: #0b3c1e;
+        color: #e5e7eb;
+        padding: 36px 18px 20px;
       }
 
       .footer-inner {
         max-width: var(--max-width);
         margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 32px;
-        justify-content: space-between;
-        font-size: 13px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        font-size: 14px;
       }
 
-      .footer-column h4 {
-        font-size: 13px;
+      .footer h4 {
+        font-size: 14px;
         text-transform: uppercase;
-        margin-bottom: 8px;
+        letter-spacing: 0.04em;
+        margin-bottom: 10px;
       }
 
-      .footer-column p {
-        margin-bottom: 4px;
-      }
-
-      .footer-social {
-        display: flex;
-        gap: 10px;
-        font-size: 18px;
-        align-items: center;
+      .footer p {
+        margin-bottom: 6px;
       }
 
       .footer-bottom {
         max-width: var(--max-width);
-        margin: 12px auto 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        padding-top: 8px;
-        font-size: 11px;
+        margin: 18px auto 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 10px;
+        font-size: 12px;
         display: flex;
         justify-content: space-between;
+        gap: 8px;
         color: rgba(255, 255, 255, 0.9);
-      }
-
-      /* SEZIONE CONTATTO (per ancora) */
-
-      #contato {
-        scroll-margin-top: calc(var(--header-height) + 20px);
+        flex-wrap: wrap;
       }
 
       /* RESPONSIVE */
 
-      @media (max-width: 900px) {
-        .section-inner {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .header-inner {
-          justify-content: space-between;
-        }
-
+      @media (max-width: 920px) {
         .nav {
           position: fixed;
-          inset: var(--header-height) 0 auto 0;
-          background: var(--green-main);
+          inset: 72px 0 auto 0;
+          background: var(--green-dark);
           flex-direction: column;
           align-items: flex-start;
-          padding: 12px 20px 16px;
+          padding: 14px 20px 18px;
           transform: translateY(-120%);
           transition: transform var(--transition);
           gap: 14px;
@@ -416,28 +627,26 @@
           display: flex;
         }
 
-        .hero-inner {
-          align-items: flex-start;
+        .hero {
+          padding-top: 110px;
         }
 
-        .hero-logo-circle {
-          width: 90px;
-          height: 90px;
+        .impact-section {
+          margin-top: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-title {
+          letter-spacing: 0.04em;
         }
 
-        .hero-tagline {
-          max-width: 100%;
+        .hero-stats {
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         }
 
-        .footer-inner {
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .footer-bottom {
-          flex-direction: column;
-          gap: 4px;
-          align-items: flex-start;
+        .story-chip {
+          font-size: 13px;
         }
       }
     </style>
@@ -451,13 +660,15 @@
         </a>
 
         <nav class="nav" id="mainNav">
-          <a href="#top">Home</a>
-          <a href="#sobre">Sobre</a>
+          <a href="#top">Início</a>
+          <a href="#impacto">Impacto</a>
+          <a href="#valores">Missão</a>
+          <a href="#historia">Comunidade</a>
           <a href="#contato">Contato</a>
         </nav>
 
         <div class="social">
-          <span>PT</span>
+          <span class="pill">PT</span>
           <div class="nav-toggle" id="navToggle" aria-label="Abrir menu">
             <span></span><span></span><span></span>
           </div>
@@ -467,101 +678,219 @@
 
     <main id="top">
       <section class="hero">
-        <div class="hero-top-edge"></div>
-        <div class="hero-bottom-edge"></div>
-
         <div class="hero-inner">
-          <div class="hero-logo-circle">
-            <img src="public/img/logo-ecnvh.png" alt="Logo ECNVH" />
-          </div>
-
-          <div>
+          <div class="hero-content">
+            <div class="hero-badge">Escola Comunitária Novo Horizonte</div>
             <div class="hero-title">ECNVH</div>
-            <div class="hero-subtitle">Escola Comunitária Novo Horizonte</div>
+            <div class="hero-subtitle">Educação que abraça toda a comunidade</div>
             <p class="hero-tagline">
-              “Um contributo para a protecção da Criança”. Educação comunitária
-              ao ar livre, para que nenhuma criança fique sem aprender.
+              “Um contributo para a protecção da Criança”. Educação comunitária ao
+              ar livre, com professores dedicados e alunos cheios de vontade de
+              aprender.
             </p>
-            <a href="#contato" class="hero-btn">Contato</a>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contato">Quero contribuir</a>
+              <a class="btn btn-secondary" href="#historia"
+                >Explorar comunidades</a
+              >
+            </div>
+            <div class="hero-stats">
+              <div class="stat-card">
+                <span class="stat-number">97</span>
+                crianças semanalmente
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">+20</span>
+                aulas ao ar livre
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">2024</span>
+                impacto em curso
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <h3>Comunidades em movimento</h3>
+            <p>
+              <span class="quote-mark">“</span>Sabia que muita coisa na vida não
+              pesa no coração, é apenas a forma como olhamos para elas?
+              Aproveite esta semana para sair da zona de conforto e lembrar que
+              todo conhecimento vivido não é esquecido.
+            </p>
+            <p style="font-weight: 700">— ECNVH</p>
           </div>
         </div>
       </section>
 
-      <section class="section-info" id="sobre">
+      <section class="impact-section" id="impacto">
         <div class="section-inner">
-          <div>
-            <h2>Sobre o projecto</h2>
-            <p>
-              A Escola Comunitária Novo Horizonte nasceu do esforço de
-              voluntários e líderes comunitários para dar acesso à educação a
-              crianças que vivem em zonas com poucos recursos.
-            </p>
-            <p>
-              As aulas acontecem muitas vezes ao ar livre, debaixo de árvores e
-              em espaços improvisados, mas com professores dedicados e alunos
-              cheios de vontade de aprender.
-            </p>
-            <p>
-              Com o apoio de parceiros e doadores, o objectivo é construir salas
-              de aula seguras, garantir materiais escolares básicos e reforçar a
-              protecção da criança em toda a comunidade.
-            </p>
-          </div>
-
-          <aside class="highlight-box">
-            <h3>Como pode ajudar</h3>
-            <ul>
-              <li>
-                • Doação de materiais escolares (cadernos, lápis, livros).
-              </li>
-              <li>• Apoio financeiro para infraestruturas e alimentação.</li>
-              <li>• Voluntariado em actividades educativas e recreativas.</li>
-              <li>
-                • Divulgação do projecto nas redes sociais e na sua comunidade.
-              </li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <footer class="footer" id="contato">
-        <div class="footer-inner">
-          <div class="footer-column">
-            <h4>Endereço</h4>
-            <p>Viana, Luanda - Angola</p>
-            <p>Escola Comunitária Novo Horizonte</p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Contato</h4>
-            <p><strong>E-mail:</strong></p>
-            <p>jorgeselumbo@gmail.com</p>
-            <p>novoh700@gmail.com</p>
-            <p><strong>Contactos:</strong></p>
-            <p>+244 935 514 266</p>
-            <p>+244 928 415 709</p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Redes sociais</h4>
-            <div class="footer-social">
-              <!-- sostituisci con icone reali / links -->
-              <span>IG</span>
-              <span>FB</span>
-              <span>YT</span>
+          <h2 class="section-title">Impacto que já é visível</h2>
+          <p class="section-lead">
+            Criamos escolas comunitárias que são centros vivos de aprendizagem,
+            cuidado e esperança. Junte-se a famílias, voluntários e professores
+            que já estão a transformar o presente e o futuro.
+          </p>
+          <div class="impact-grid">
+            <div class="impact-card impact-highlight">
+              <h3>Impacto em 2024</h3>
+              <span class="impact-number">97</span>
+              <p>crianças atendidas semanalmente com actividades educativas.</p>
+            </div>
+            <div class="impact-card">
+              <h3>Apoio imediato</h3>
+              <p>
+                Doação de materiais escolares, reforço alimentar e espaços
+                seguros para garantir que nenhuma criança fique sem aprender.
+              </p>
+            </div>
+            <div class="impact-card">
+              <h3>Participação</h3>
+              <p>
+                Voluntários, parceiros e líderes locais mobilizados para aulas,
+                recreação e mentoria em Viana, Luanda.
+              </p>
+            </div>
+            <div class="impact-card">
+              <h3>Próximos passos</h3>
+              <p>
+                Construir salas seguras, fortalecer a protecção da criança e
+                expandir para novas comunidades.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="footer-bottom">
-          <span
-            >© <span id="year"></span> ECNVH - Escola Comunitária Novo
-            Horizonte</span
-          >
-          <span>Um contributo para a protecção da Criança</span>
+      <section class="section-inner" id="valores">
+        <h2 class="section-title">Missão, Visão e Valores</h2>
+        <p class="section-lead">
+          O nosso compromisso é proteger cada criança com educação inclusiva e
+          oportunidades reais de futuro.
+        </p>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h4>Missão</h4>
+            <p>
+              Oferecer educação gratuita e de qualidade, criando um futuro melhor
+              para as crianças do bairro e além.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌟</div>
+            <h4>Visão</h4>
+            <p>
+              Ser referência comunitária, reconhecida pela inovação educativa e
+              pela protecção da criança em ambiente seguro.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h4>Valores</h4>
+            <p>
+              Respeito e igualdade de oportunidades, inclusão, segurança e
+              responsabilidade social.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">📬</div>
+            <h4>Contacto</h4>
+            <p>
+              exemplo@dominio.org<br />
+              <strong>Ajude agora | Doe</strong><br />
+              +244 935 514 266
+            </p>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      <section class="story" id="historia">
+        <div class="section-inner story-grid">
+          <div class="story-text">
+            <h2 class="section-title">Histórias que nascem à sombra das árvores</h2>
+            <p class="section-lead">
+              Aulas acontecem debaixo de árvores, em espaços improvisados, com
+              professores dedicados e famílias unidas para garantir a aprendizagem.
+            </p>
+            <p>
+              Cada contributo, seja voluntário ou doação, ajuda a construir
+              salas, garantir materiais e manter a protecção de cada criança.
+            </p>
+            <div class="pill-row">
+              <span>Comunidade de Viana</span>
+              <span>Protecção da criança</span>
+              <span>Apoio semanal</span>
+            </div>
+          </div>
+          <div class="story-image">
+            <img
+              src="public/img/hero-escola.jpg"
+              alt="Aula comunitária ao ar livre"
+            />
+            <div class="story-chip">
+              <img
+                src="public/img/logo-ecnvh.png"
+                alt="Logo ECNVH"
+                style="height: 22px"
+              />
+              Aprender em conjunto
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contato">
+        <div class="section-inner">
+          <h2 class="section-title">Junte-se para garantir acesso à educação</h2>
+          <p class="section-lead">
+            Precisamos de parceiros e voluntários para construir salas, fornecer
+            material escolar e ampliar o impacto. Entre em contacto e vamos
+            transformar vidas juntos.
+          </p>
+          <div class="hero-actions" style="justify-content: center">
+            <a class="btn btn-primary" href="mailto:novoh700@gmail.com"
+              >Falar com a equipa</a
+            >
+            <a class="btn btn-secondary" href="tel:+244935514266"
+              >Ligar agora</a
+            >
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <h4>Endereço</h4>
+          <p>Viana, Luanda - Angola</p>
+          <p>Escola Comunitária Novo Horizonte</p>
+        </div>
+
+        <div>
+          <h4>Contato</h4>
+          <p><strong>E-mail:</strong></p>
+          <p>jorgeselumbo@gmail.com</p>
+          <p>novoh700@gmail.com</p>
+          <p><strong>Contactos:</strong></p>
+          <p>+244 935 514 266</p>
+          <p>+244 928 415 709</p>
+        </div>
+
+        <div>
+          <h4>Redes sociais</h4>
+          <p>Instagram • Facebook • YouTube</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span
+          >© <span id="year"></span> ECNVH - Escola Comunitária Novo Horizonte</span
+        >
+        <span>Um contributo para a protecção da Criança</span>
+      </div>
+    </footer>
 
     <script>
       // anno corrente

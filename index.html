@@ -3,19 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ECNVH - Escola Comunitária Novo Horizonte</title>
+    <title>KIALA | Onde sonhos jogam</title>
     <style>
       :root {
-        --green-main: #32a852;
-        --green-dark: #23823b;
-        --text-light: #ffffff;
-        --text-dark: #222222;
-        --bg-light: #f5f5f5;
-        --max-width: 1200px;
-        --header-height: 70px;
-        --transition: 0.25s ease;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        --green: #3aa341;
+        --green-dark: #2d7b33;
+        --white: #ffffff;
+        --text: #1c1c1c;
+        --max-width: 1100px;
+        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
       }
 
       * {
@@ -25,561 +21,256 @@
       }
 
       body {
-        margin: 0;
-        background: #000;
-        color: var(--text-dark);
+        background: #f7f7f7;
+        color: var(--text);
       }
 
       a {
-        text-decoration: none;
         color: inherit;
+        text-decoration: none;
       }
 
-      /* HEADER */
-
-      .header {
-        position: fixed;
+      header {
+        position: sticky;
         top: 0;
-        left: 0;
-        right: 0;
-        height: var(--header-height);
-        background: var(--green-main);
-        display: flex;
-        align-items: center;
-        z-index: 20;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(4px);
       }
 
-      .header-inner {
-        width: 100%;
+      .nav-bar {
         max-width: var(--max-width);
         margin: 0 auto;
-        padding: 0 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 14px 18px;
+        gap: 18px;
       }
 
-      .logo {
+      .brand {
         display: flex;
         align-items: center;
         gap: 10px;
-      }
-
-      .logo img {
-        height: 40px;
-        width: auto;
-        display: block;
-      }
-
-      .logo-text {
         font-weight: 700;
-        font-size: 20px;
-        color: var(--text-light);
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
+        color: var(--green-dark);
       }
 
-      .nav {
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+
+      nav {
         display: flex;
         align-items: center;
-        gap: 24px;
+        gap: 18px;
         font-size: 13px;
         text-transform: uppercase;
-        color: var(--text-light);
+        letter-spacing: 0.08em;
       }
 
-      .nav a {
-        position: relative;
-        padding-bottom: 3px;
+      nav a {
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
       }
 
-      .nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        background: #ffffff;
-        transition: width var(--transition);
+      nav a:hover,
+      nav a:focus-visible {
+        border-color: var(--green);
       }
 
-      .nav a:hover::after {
-        width: 100%;
-      }
-
-      .social {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        color: var(--text-light);
-      }
-
-      .social span {
-        font-size: 12px;
-        opacity: 0.85;
-      }
-
-      /* HAMBURGER MOBILE */
-
-      .nav-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 4px;
+      .cta {
+        padding: 10px 18px;
+        background: var(--green);
+        color: var(--white);
+        border-radius: 3px;
+        font-weight: 700;
+        border: none;
         cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .nav-toggle span {
-        width: 20px;
-        height: 2px;
-        background: #ffffff;
+      .cta:hover,
+      .cta:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(58, 163, 65, 0.25);
       }
-
-      /* HERO */
 
       .hero {
         position: relative;
-        min-height: 100vh;
-        background: url("public/img/hero-escola_up_2x_4x.png") center center /
-          cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: var(--header-height);
+        min-height: 85vh;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        text-align: center;
+        background: url("public/img/hero-escola_up_2x_4x.png") center/cover no-repeat;
         overflow: hidden;
       }
 
-      .hero::before {
+      .hero::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(
-            circle at 60% 60%,
-            rgba(255, 255, 255, 0.65),
-            transparent 55%
-          ),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
-        mix-blend-mode: soft-light;
+        background: linear-gradient(160deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.45));
       }
 
-      .hero-inner {
+      .hero-content {
         position: relative;
         z-index: 1;
-        width: 100%;
-        max-width: var(--max-width);
-        padding: 0 16px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
-        color: var(--text-light);
-      }
-
-      .hero-logo-circle {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 3px solid #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 16px;
-        background: rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(2px);
-      }
-
-      .hero-logo-circle img {
-        max-width: 80%;
-        max-height: 80%;
-      }
-
-      .hero-title {
-        font-size: clamp(40px, 6vw, 72px);
-        line-height: 1;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-      }
-
-      .hero-subtitle {
-        font-size: clamp(20px, 3vw, 28px);
-        margin-bottom: 4px;
-        text-transform: uppercase;
-      }
-
-      .hero-tagline {
-        font-size: 14px;
-        max-width: 420px;
-        margin-bottom: 24px;
-      }
-
-      .hero-btn {
-        display: inline-block;
-        padding: 10px 26px;
-        background: #ffffff;
-        border-radius: 2px;
-        font-size: 13px;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: var(--green-dark);
-        border: none;
-        cursor: pointer;
-        transition: background var(--transition), transform var(--transition),
-          box-shadow var(--transition);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-btn:hover {
-        background: #f1f1f1;
-        transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-      }
-
-      /* SHAPE DIVIDER (sopra e sotto il hero) */
-
-      .hero-top-edge,
-      .hero-bottom-edge {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        background: var(--green-main);
-        z-index: 2;
-      }
-
-      .hero-top-edge {
-        top: 0;
-        clip-path: polygon(
-          0 100%,
-          8% 65%,
-          25% 85%,
-          40% 60%,
-          60% 80%,
-          78% 55%,
-          100% 80%,
-          100% 0,
-          0 0
-        );
-      }
-
-      .hero-bottom-edge {
-        bottom: 0;
-        clip-path: polygon(
-          0 0,
-          15% 35%,
-          32% 20%,
-          50% 40%,
-          68% 20%,
-          85% 35%,
-          100% 10%,
-          100% 100%,
-          0 100%
-        );
-      }
-
-      /* SEZIONE INFO (sostituisce "sobre") */
-
-      .section-info {
-        position: relative;
-        background: var(--bg-light);
-        padding: 64px 16px 96px;
-      }
-
-      .section-inner {
-        max-width: var(--max-width);
-        margin: 0 auto;
+        max-width: 680px;
+        padding: 0 18px;
         display: grid;
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        gap: 32px;
+        gap: 14px;
       }
 
-      .section-info h2 {
-        font-size: 24px;
-        margin-bottom: 12px;
-        color: var(--green-dark);
+      .hero-logo {
+        justify-self: center;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: grid;
+        place-items: center;
+        border: 3px solid var(--white);
       }
 
-      .section-info p {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 10px;
+      .hero-logo img {
+        width: 68px;
+        height: 68px;
       }
 
-      .highlight-box {
-        background: #ffffff;
-        border-radius: 4px;
-        padding: 18px 20px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-        font-size: 14px;
-      }
-
-      .highlight-box h3 {
-        font-size: 16px;
-        margin-bottom: 8px;
-        color: var(--green-dark);
-      }
-
-      .highlight-box ul {
-        list-style: none;
-        padding-left: 0;
-      }
-
-      .highlight-box li {
-        margin-bottom: 6px;
-      }
-
-      /* CONTATTO / FOOTER */
-
-      .footer {
-        background: var(--green-main);
-        color: var(--text-light);
-        padding: 24px 16px 18px;
-        position: relative;
-      }
-
-      .footer-inner {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 32px;
-        justify-content: space-between;
-        font-size: 13px;
-      }
-
-      .footer-column h4 {
-        font-size: 13px;
+      .hero h1 {
+        font-size: clamp(42px, 5vw, 68px);
+        letter-spacing: 0.06em;
         text-transform: uppercase;
-        margin-bottom: 8px;
+        font-weight: 800;
       }
 
-      .footer-column p {
-        margin-bottom: 4px;
+      .hero p {
+        font-size: 16px;
+        opacity: 0.92;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
       }
 
-      .footer-social {
-        display: flex;
-        gap: 10px;
-        font-size: 18px;
-        align-items: center;
-      }
-
-      .footer-bottom {
+      .section {
         max-width: var(--max-width);
-        margin: 12px auto 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        padding-top: 8px;
-        font-size: 11px;
-        display: flex;
-        justify-content: space-between;
-        color: rgba(255, 255, 255, 0.9);
+        margin: -60px auto 60px;
+        padding: 28px;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 18px;
       }
 
-      /* SEZIONE CONTATTO (per ancora) */
-
-      #contato {
-        scroll-margin-top: calc(var(--header-height) + 20px);
+      .section h2 {
+        color: var(--green-dark);
+        letter-spacing: 0.04em;
       }
 
-      /* RESPONSIVE */
-
-      @media (max-width: 900px) {
-        .section-inner {
-          grid-template-columns: 1fr;
-        }
+      .section .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
       }
 
-      @media (max-width: 768px) {
-        .header-inner {
-          justify-content: space-between;
+      .card {
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 16px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .card strong {
+        color: var(--green-dark);
+      }
+
+      footer {
+        background: var(--green-dark);
+        color: var(--white);
+        padding: 24px 18px;
+        text-align: center;
+        letter-spacing: 0.01em;
+      }
+
+      footer a {
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      @media (max-width: 720px) {
+        nav {
+          display: none;
         }
 
-        .nav {
-          position: fixed;
-          inset: var(--header-height) 0 auto 0;
-          background: var(--green-main);
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 12px 20px 16px;
-          transform: translateY(-120%);
-          transition: transform var(--transition);
-          gap: 14px;
-        }
-
-        .nav.open {
-          transform: translateY(0);
-        }
-
-        .nav-toggle {
-          display: flex;
-        }
-
-        .hero-inner {
-          align-items: flex-start;
-        }
-
-        .hero-logo-circle {
-          width: 90px;
-          height: 90px;
-        }
-
-        .hero-tagline {
-          max-width: 100%;
-        }
-
-        .footer-inner {
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .footer-bottom {
-          flex-direction: column;
-          gap: 4px;
-          align-items: flex-start;
+        .section {
+          margin: -40px 16px 50px;
         }
       }
     </style>
   </head>
   <body>
-    <header class="header">
-      <div class="header-inner">
-        <a href="#top" class="logo">
-          <img src="public/img/logo-ecnvh.png" alt="Logo ECNVH" />
-          <span class="logo-text">ECNVH</span>
+    <header>
+      <div class="nav-bar">
+        <a class="brand" href="index.html">
+          <img src="public/img/logo-ecnvh.png" alt="Logo KIALA" />
+          <span>KIALA</span>
         </a>
-
-        <nav class="nav" id="mainNav">
-          <a href="#top">Home</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#contato">Contato</a>
+        <nav aria-label="Navegação principal">
+          <a href="index.html">Home</a>
+          <a href="sobre.html">Sobre</a>
         </nav>
-
-        <div class="social">
-          <span>PT</span>
-          <div class="nav-toggle" id="navToggle" aria-label="Abrir menu">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
+        <a class="cta" href="sobre.html#contato">Contato</a>
       </div>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero">
-        <div class="hero-top-edge"></div>
-        <div class="hero-bottom-edge"></div>
-
-        <div class="hero-inner">
-          <div class="hero-logo-circle">
-            <img src="public/img/logo-ecnvh.png" alt="Logo ECNVH" />
+        <div class="hero-content">
+          <div class="hero-logo">
+            <img src="public/img/logo-ecnvh.png" alt="Marca KIALA" />
           </div>
-
-          <div>
-            <div class="hero-title">ECNVH</div>
-            <div class="hero-subtitle">Escola Comunitária Novo Horizonte</div>
-            <p class="hero-tagline">
-              “Um contributo para a protecção da Criança”. Educação comunitária
-              ao ar livre, para que nenhuma criança fique sem aprender.
-            </p>
-            <a href="#contato" class="hero-btn">Contato</a>
+          <h1>KIALA</h1>
+          <p>Onde sonhos jogam. Perto de casa e com a comunidade ao lado.</p>
+          <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <a class="cta" href="sobre.html">Conheça o projecto</a>
+            <a class="cta" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #fff;" href="sobre.html#contato">Fale Conosco</a>
           </div>
         </div>
       </section>
 
-      <section class="section-info" id="sobre">
-        <div class="section-inner">
-          <div>
-            <h2>Sobre o projecto</h2>
-            <p>
-              A Escola Comunitária Novo Horizonte nasceu do esforço de
-              voluntários e líderes comunitários para dar acesso à educação a
-              crianças que vivem em zonas com poucos recursos.
-            </p>
-            <p>
-              As aulas acontecem muitas vezes ao ar livre, debaixo de árvores e
-              em espaços improvisados, mas com professores dedicados e alunos
-              cheios de vontade de aprender.
-            </p>
-            <p>
-              Com o apoio de parceiros e doadores, o objectivo é construir salas
-              de aula seguras, garantir materiais escolares básicos e reforçar a
-              protecção da criança em toda a comunidade.
-            </p>
+      <section class="section">
+        <h2>O que oferecemos</h2>
+        <div class="grid">
+          <div class="card">
+            <strong>Ambiente seguro</strong>
+            <p>Espaços organizados para treino e lazer, com acompanhamento de perto.</p>
           </div>
-
-          <aside class="highlight-box">
-            <h3>Como pode ajudar</h3>
-            <ul>
-              <li>
-                • Doação de materiais escolares (cadernos, lápis, livros).
-              </li>
-              <li>• Apoio financeiro para infraestruturas e alimentação.</li>
-              <li>• Voluntariado em actividades educativas e recreativas.</li>
-              <li>
-                • Divulgação do projecto nas redes sociais e na sua comunidade.
-              </li>
-            </ul>
-          </aside>
+          <div class="card">
+            <strong>Formação inclusiva</strong>
+            <p>Atividades pensadas para integrar as crianças da comunidade e criar oportunidades.</p>
+          </div>
+          <div class="card">
+            <strong>Ligação com famílias</strong>
+            <p>Comunicação simples, directa e próxima com quem acredita nos nossos sonhos.</p>
+          </div>
         </div>
       </section>
-
-      <footer class="footer" id="contato">
-        <div class="footer-inner">
-          <div class="footer-column">
-            <h4>Endereço</h4>
-            <p>Viana, Luanda - Angola</p>
-            <p>Escola Comunitária Novo Horizonte</p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Contato</h4>
-            <p><strong>E-mail:</strong></p>
-            <p>jorgeselumbo@gmail.com</p>
-            <p>novoh700@gmail.com</p>
-            <p><strong>Contactos:</strong></p>
-            <p>+244 935 514 266</p>
-            <p>+244 928 415 709</p>
-          </div>
-
-          <div class="footer-column">
-            <h4>Redes sociais</h4>
-            <div class="footer-social">
-              <!-- sostituisci con icone reali / links -->
-              <span>IG</span>
-              <span>FB</span>
-              <span>YT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span
-            >© <span id="year"></span> ECNVH - Escola Comunitária Novo
-            Horizonte</span
-          >
-          <span>Um contributo para a protecção da Criança</span>
-        </div>
-      </footer>
     </main>
 
+    <footer>
+      © <span id="year"></span> KIALA — Onde sonhos jogam. <a href="sobre.html#contato">Contato</a>
+    </footer>
+
     <script>
-      // anno corrente
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      // menu mobile
-      const navToggle = document.getElementById("navToggle");
-      const mainNav = document.getElementById("mainNav");
-
-      navToggle.addEventListener("click", () => {
-        mainNav.classList.toggle("open");
-      });
-
-      mainNav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mainNav.classList.remove("open");
-        });
-      });
     </script>
   </body>
 </html>

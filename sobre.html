@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIALA | Sobre</title>
+    <style>
+      :root {
+        --green: #3aa341;
+        --green-dark: #2d7b33;
+        --white: #ffffff;
+        --text: #1c1c1c;
+        --max-width: 1100px;
+        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: #f7f7f7; color: var(--text); }
+      a { color: inherit; text-decoration: none; }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(4px);
+      }
+
+      .nav-bar {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        gap: 18px;
+      }
+
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--green-dark); }
+      .brand img { width: 42px; height: 42px; }
+
+      nav { display: flex; align-items: center; gap: 18px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+      nav a { padding-bottom: 4px; border-bottom: 2px solid transparent; }
+      nav a:hover, nav a:focus-visible { border-color: var(--green); }
+
+      .cta { padding: 10px 18px; background: var(--green); color: var(--white); border-radius: 3px; font-weight: 700; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .cta:hover, .cta:focus-visible { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(58, 163, 65, 0.25); }
+
+      .hero {
+        position: relative;
+        min-height: 60vh;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        text-align: center;
+        background: url("public/img/hero-escola.jpg") center/cover no-repeat;
+        overflow: hidden;
+      }
+
+      .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45)); }
+
+      .hero-content { position: relative; z-index: 1; max-width: 700px; padding: 0 18px; display: grid; gap: 10px; }
+      .hero h1 { font-size: clamp(34px, 4.4vw, 58px); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 800; }
+      .hero p { font-size: 16px; opacity: 0.92; line-height: 1.6; }
+
+      .wrapper { max-width: var(--max-width); margin: -40px auto 60px; padding: 0 18px; position: relative; z-index: 2; }
+      .panel { background: var(--white); border-radius: 8px; padding: 26px; box-shadow: 0 16px 36px rgba(0,0,0,0.1); display: grid; gap: 16px; }
+      .panel h2 { color: var(--green-dark); letter-spacing: 0.04em; }
+      .panel p { line-height: 1.6; }
+
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+      .card { border: 1px solid #e5e5e5; border-radius: 6px; padding: 14px; display: grid; gap: 6px; }
+      .card strong { color: var(--green-dark); }
+
+      footer { background: var(--green-dark); color: var(--white); padding: 22px 18px; text-align: center; }
+      footer a { color: var(--white); font-weight: 600; }
+
+      @media (max-width: 720px) { nav { display: none; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-bar">
+        <a class="brand" href="index.html">
+          <img src="public/img/logo-ecnvh.png" alt="Logo KIALA" />
+          <span>KIALA</span>
+        </a>
+        <nav aria-label="Navegação principal">
+          <a href="index.html">Home</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+        <a class="cta" href="#contato">Contato</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Sobre a KIALA</h1>
+          <p>Um espaço pensado para que crianças e jovens cresçam com alegria, segurança e espírito de equipa.</p>
+        </div>
+      </section>
+
+      <div class="wrapper">
+        <div class="panel">
+          <h2>Propósito</h2>
+          <p>A KIALA conecta a comunidade através do desporto, promovendo disciplina, amizade e novos caminhos para o futuro.</p>
+          <div class="grid">
+            <div class="card">
+              <strong>Treinos organizados</strong>
+              <p>Metodologia simples, horários claros e foco em desenvolvimento.</p>
+            </div>
+            <div class="card">
+              <strong>Eventos locais</strong>
+              <p>Competições amistosas e actividades que envolvem famílias e vizinhos.</p>
+            </div>
+            <div class="card">
+              <strong>Orientação social</strong>
+              <p>Apoio próximo a quem precisa, com acompanhamento educativo e recreativo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="contato" class="panel" style="margin-top: 20px;">
+          <h2>Contato</h2>
+          <p>Fale connosco para participar, apoiar ou agendar uma visita.</p>
+          <div class="grid">
+            <div class="card">
+              <strong>E-mail</strong>
+              <p>contato@projectokiala.com</p>
+              <p>support@projectokiala.com</p>
+            </div>
+            <div class="card">
+              <strong>Telefone</strong>
+              <p>+244 935 514 266</p>
+              <p>+244 928 415 709</p>
+            </div>
+            <div class="card">
+              <strong>Endereço</strong>
+              <p>Zona industrial · Viana · Angola</p>
+              <p>Campo comunitário KIALA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> KIALA — Onde sonhos jogam. <a href="#contato">Contato</a>
+    </footer>
+
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </body>
+</html>
